@@ -4,6 +4,10 @@ function createAnimalList(){
 
     animals = [...new Set(animals)]; // remove duplicates from array
 
+    // find the existing list HTML and reset it
+    let rootOlNode = document.querySelector('ol');
+    rootOlNode.innerHTML = '';
+
     animals.forEach((animal, index) => {
         console.log("animal: " + animal);
 
@@ -23,7 +27,7 @@ function createAnimalList(){
         newList.appendChild(removeItemButton);
 
         // find the ol element that exists in the page and append the li into it
-        let rootOlNode = document.querySelector('ol');
+        
         rootOlNode.appendChild(newList);
     });        
 }
@@ -56,6 +60,9 @@ function removeAnimalFromList(targetAnimalId){
 }
 
 function addAnimalToList(event, targetInputId){
+    // this prevents the form from reloading the page
+    event.preventDefault();
+
     // Fine the input field matching targetInputId
     let targetInputField = document.getElementById(targetInputId);
 
@@ -75,5 +82,7 @@ function addAnimalToList(event, targetInputId){
 }
 
 let fakeFormButton = document.getElementById('fakeform-submit');
-
 fakeFormButton.addEventListener('click', (event) => {addAnimalToList(event, 'fakeform-addAnimal')});
+
+let realFormButton = document.getElementById('realform-submit');
+realFormButton.addEventListener('click', (event) => {addAnimalToList(event, 'realform-addAnimal')});
