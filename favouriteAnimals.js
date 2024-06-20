@@ -1,12 +1,16 @@
 let animals = ['cat', 'dog', 'elephant', 'lion', 'tiger', 'bear', 'deer', 'wolf', 'fox', 'rabbit'];
 
 function createAnimalList(){
+
+    animals = [...new Set(animals)]; // remove duplicates from array
+
     animals.forEach((animal, index) => {
         console.log("animal: " + animal);
 
         // create an li element with animal value as its text
         let newList = document.createElement('li');
         newList.textContent = animal;
+        // newList.innerHTML = <h6> ${animal} </h6>; - example of using innerHTML to add html elements
         newList.id = animal;
 
         // create a button element with text "Remove"
