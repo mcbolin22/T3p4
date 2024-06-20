@@ -54,3 +54,26 @@ function removeAnimalFromList(targetAnimalId){
     //update or wipe and rebuild the animal list html
 
 }
+
+function addAnimalToList(event, targetInputId){
+    // Fine the input field matching targetInputId
+    let targetInputField = document.getElementById(targetInputId);
+
+    // Get the text value from the input field that we found
+    let foundInputFieldValue = targetInputField.value;
+    console.log("Input field value to add to list is: " + foundInputFieldValue);
+
+    // Push the text value into the animals array
+    animals.push(foundInputFieldValue);
+
+    // Delete the animal list HTML elements and recreate them
+    createAnimalList();
+
+    // Make sure this function deletes the existing list first
+
+
+}
+
+let fakeFormButton = document.getElementById('fakeform-submit');
+
+fakeFormButton.addEventListener('click', (event) => {addAnimalToList(event, 'fakeform-addAnimal')});
