@@ -77,6 +77,9 @@ function addAnimalToList(event, targetInputId){
     // Push the text value into the animals array
     animals.push(foundInputFieldValue);
 
+    // Clear the input field
+    targetInputField.value = '';
+
     // Delete the animal list HTML elements and recreate them
     createAnimalList();
 
